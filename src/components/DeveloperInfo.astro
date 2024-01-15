@@ -7,7 +7,7 @@ import DevLink from "./DevLink.astro";
   col-span-1 bg-[url('https://images.unsplash.com/photo-1501963917309-56546c33e19d?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-no-repeat bg-cover"
 >
   <!-- all -->
-  <div class="align-bottom self-end">
+  <div class="self-end flex justify-center flex-col items-center">
     <!-- image -->
     <div class="flex justify-center">
       <img
@@ -18,10 +18,10 @@ import DevLink from "./DevLink.astro";
     </div>
 
     <!-- text -->
-    <div class="flex flex-col lg:gap-5 p-10 prose">
-      <h1 class="text-pretty text-center">Sazzad Hossain Tanim</h1>
-      <h2 class="myText prose prose-lg animate-pulse text-center text-white/70">
-      </h2>
+    <div class="flex flex-col lg:gap-5 p-10 prose
+    text-center">
+      <h1 class="text-pretty text-white/70">Sazzad Hossain Tanim</h1>
+      <h2 class="myText prose-lg animate-pulse text-white/70"></h2>
     </div>
 
     <!-- icons -->
@@ -44,7 +44,7 @@ import DevLink from "./DevLink.astro";
     </div>
 
     <!-- buttons -->
-    <div class="flex gap-2 justify-between prose">
+    <div class="flex gap-4 justify-between prose">
       <button class="w-40 h-10 bg-white uppercase">DOWNLOAD CV</button>
       <button class="w-40 h-10 bg-white uppercase">Contact me</button>
     </div>
