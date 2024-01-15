@@ -1,14 +1,28 @@
 ---
-import MyIcon from "./MyIcon.astro";
+import NavItem from "./NavItem.astro";
 ---
 
 <aside
   class="bg-gray-600 lg:col-span-1 p-5 flex gap-4 justify-between lg:flex-col"
 >
-  <div class="flex gap-2 lg:flex-col lg:gap-5">
-    {[...Array(2)].map((logo, i) => <MyIcon />)}
+  <div class="flex gap-2 lg:flex-col lg:gap-8">
+    <NavItem
+      title="home"
+      logo_url="https://www.svgrepo.com/show/501871/home-house.svg"
+      url="/"
+    />
+    <NavItem
+      title="about me"
+      logo_url="https://www.svgrepo.com/show/530412/user.svg"
+      url="/"
+    />
   </div>
+
   <div class="flex gap-2 lg:flex-col lg:gap-5">
-    {[...Array(3)].map((logo, i) => <MyIcon />)}
+    <NavItem
+      title="my services"
+      logo_url="https://www.svgrepo.com/show/530412/user.svg"
+      url="#my_services"
+    />
   </div>
 </aside>
