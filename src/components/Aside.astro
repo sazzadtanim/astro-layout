@@ -1,0 +1,14 @@
+---
+import MyIcon from "./MyIcon.astro";
+---
+
+<aside
+class="ring-2 bg-gray-600 lg:col-span-1 p-5 flex gap-4 justify-between lg:flex-col"
+>
+<div class="ring-2 flex gap-2 lg:flex-col lg:gap-5">
+  {[...Array(2)].map((logo, i) => <MyIcon />)}
+</div>
+<div class="ring-2 flex gap-2 lg:flex-col lg:gap-5">
+  {[...Array(5)].map((logo, i) => <MyIcon />)}
+</div>
+</aside>

@@ -1,5 +1,14 @@
 ---
+import Article from "../components/Article.astro";
+import MyService from "../components/MyService.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro." />
+<Layout title="Welcome to Astro.">
+  <!-- article -->
+  {[...Array(1)].map((article, index) => <Article />)}
+
+  <section class="grid xl:grid-cols-2 gap-4">
+    {[...Array(10)].map((article, index) => <MyService />)}
+  </section>
+</Layout>
