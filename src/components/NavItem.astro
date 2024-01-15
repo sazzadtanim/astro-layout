@@ -1,0 +1,17 @@
+---
+export interface I_NavItem {
+  logo_url: string;
+  title: string;
+  url: string;
+}
+
+const { logo_url, title, url } = Astro.props as I_NavItem;
+---
+
+<a class="flex flex-col gap-2 items-center" href={url}>
+  <img src={logo_url} alt={title} class="size-8" />
+  <!-- <i class="fa-solid fa-house size-8"></i> -->
+
+  <p class="font-medium text-sm capitalize">{title}</p>
+  <!-- <div class="h-4 bg-white w-full hidden lg:block"></div> -->
+</a>
