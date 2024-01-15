@@ -1,3 +1,12 @@
-<a href="/" class="ring-2 ">
-    <div class="ring-2 w-10 h-10 bg-white" />
-  </a>
+---
+interface DevLink {
+  url: string;
+  icon: string;
+}
+
+const { icon, url } = Astro.props as DevLink;
+---
+
+<a href={url} class=" ring-red-500">
+  <img src={icon} alt={url} class="size-10 grid justify-center items-center sepia" />
+</a>

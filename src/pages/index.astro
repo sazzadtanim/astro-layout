@@ -6,9 +6,40 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Welcome to Astro.">
   <!-- article -->
-  {[...Array(1)].map((article, index) => <Article />)}
+  {
+    [...Array(1)].map((article, index) => (
+      <Article
+        title="About me"
+        sub_title="Hello! I’m Sazzad hossain."
+        description="Back-end & Front-end developer from Dhaka, Bangladesh. I have rich experience in JavaScript, also I am good at TypeScript. I love to talk with you."
+      />
+    ))
+  }
 
-  <section class="grid xl:grid-cols-2 gap-4">
-    {[...Array(10)].map((article, index) => <MyService />)}
+  <section class="prose">
+    <h2>My services</h2>
+
+    <div class="grid xl:grid-cols-2 gap-5 prose">
+      <MyService
+        logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
+        title="Astro"
+        description="An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter scriptAn Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter script.."
+      />
+
+      {
+        [...Array(10)].map((article, index) => (
+          <MyService
+            logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
+            title="Astro"
+            description="An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter script."
+          />
+        ))
+      }
+      <MyService
+        logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
+        title="Astro"
+        description="An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter scriptAn Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter script.."
+      />
+    </div>
   </section>
 </Layout>

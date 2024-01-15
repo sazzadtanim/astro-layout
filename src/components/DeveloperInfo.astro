@@ -2,32 +2,77 @@
 import DevLink from "./DevLink.astro";
 ---
 
-<div class="bg-gray-700 ring-2 lg:col-span-4 p-5 grid">
+<div
+  class="lg:col-span-4 p-5 grid
+  col-span-1 bg-[url('https://images.unsplash.com/photo-1501963917309-56546c33e19d?q=80&w=1970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-no-repeat bg-cover"
+>
   <!-- all -->
-  <div class="ring-2 align-bottom self-end">
+  <div class="align-bottom self-end prose">
     <!-- image -->
-    <div class="ring-2 flex justify-center">
-      <div
-        class="ring-2 w-36 h-36 rounded-full bg-white flex justify-center items-center"
-      >
-      </div>
+    <div class="flex justify-center">
+      <img
+        src="https://avatars.githubusercontent.com/u/8173325?v=4"
+        alt="developers image"
+        class="size-36 rounded-full flex justify-center items-center"
+      />
     </div>
 
     <!-- text -->
-    <div class="ring-2 flex flex-col gap-5 p-10">
-      <p class="ring-2 h-8 bg-white"></p>
-      <p class="ring-2 h-6 bg-white"></p>
+    <div class="flex flex-col lg:gap-5 p-10">
+      <h1>Sazzad Hossain Tanim</h1>
+      <h2 class="myText prose prose-lg animate-pulse text-center text-white/70">
+      </h2>
     </div>
 
     <!-- icons -->
-    <div class="ring-2 flex gap-4 justify-center mb-20">
-      {[...Array(4)].map((icon, index) => <DevLink />)}
+    <div
+      class="grid grid-flow-col gap-4 justify-center lg:mb-20 place-content-stretch"
+    >
+      <DevLink
+        url="https://github.com/sazzadtanim"
+        icon="https://www.svgrepo.com/show/512317/github-142.svg"
+      />
+      <DevLink
+        url="https://wa.me/+8801515621167"
+        icon="https://www.svgrepo.com/show/513060/whatsapp-128.svg"
+      />
+
+      <DevLink
+        url="https://wa.me/+8801515621167"
+        icon="https://www.svgrepo.com/show/521656/facebook-messenger.svg"
+      />
     </div>
 
     <!-- buttons -->
-    <div class="ring-2 flex gap-2 justify-between">
-      <div class="ring-2 w-40 h-10 bg-white"></div>
-      <div class="ring-2 w-40 h-10 bg-white"></div>
+    <div class="flex gap-2 justify-between">
+      <button class="w-40 h-10 bg-white">DOWNLOAD CV</button>
+      <button class="w-40 h-10 bg-white">Contact me</button>
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes change-text {
+    0%,
+    25% {
+      transform: translateY(-20px);
+      color: #ffa500;
+      content: "JavaScript Developer";
+    }
+    50%,
+    75% {
+      color: #f1b647;
+      content: "TypeScript Developer";
+    }
+    80% {
+      color: #fbebcf;
+      content: "React Developer";
+    }
+  }
+
+  .myText::before {
+    content: "FullStack Developer";
+    animation: change-text 8s ease-in-out infinite;
+    display: inline-block;
+  }
+</style>
