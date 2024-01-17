@@ -2,9 +2,43 @@
 import Article from "../components/Article.astro";
 import MyService from "../components/MyService.astro";
 import Layout from "../layouts/Layout.astro";
+console.log("javascript is running");
+
+import { wpquery } from "../helper/wordpress";
+
+const data: Data = await wpquery({
+  query: `query SearchServices {
+  services {
+    nodes {
+      title
+      serviceDetails {
+        description
+        logo
+      }
+    }
+  }
+}`,
+});
+
+// const nodes= data.services.nodes as
+
+interface Data {
+  services: Services;
+}
+interface Services {
+  nodes?: NodesEntity[] | null;
+}
+interface NodesEntity {
+  title: string;
+  serviceDetails: ServiceDetails;
+}
+interface ServiceDetails {
+  description: string;
+  logo: string;
+}
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="SazzadTanim">
   <!-- article -->
   {
     [...Array(1)].map((article, index) => (
@@ -22,26 +56,15 @@ import Layout from "../layouts/Layout.astro";
     <div
       class="grid xl:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-5 prose grid-rows-[masonry]"
     >
-      <MyService
-        logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
-        title="Astro"
-        description="An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter scriptAn Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter script.."
-      />
-
       {
-        [...Array(10)].map((article, index) => (
+        data.services.nodes?.map((article, index) => (
           <MyService
-            logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
-            title="Astro"
-            description="An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter script."
+            logo={article.serviceDetails.logo}
+            title={article.title}
+            description={article.serviceDetails.description}
           />
         ))
       }
-      <MyService
-        logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
-        title="Astro"
-        description="An Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter scriptAn Astro component can define and accept props. These props then become available to the component template for rendering HTML. Props are available on the Astro.props global in your frontmatter script.."
-      />
     </div>
   </section>
 </Layout>

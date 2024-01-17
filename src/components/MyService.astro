@@ -9,7 +9,7 @@ const { logo, description, title } = Astro.props as ServiceType;
 ---
 
 <div
-  class="space-y-4 p-2 transition-colors scroll-smooth duration-100 hover:bg-red-400 prose w-full h-fit border-s-4 bg-gradient-to-b from-slate-300/20 to-slate-300/50 via-cyan-200/20 rounded-md drop-shadow-lg shadow-md"
+  class="space-y-4 p-5 transition-colors scroll-smooth duration-100 hover:bg-red-400 prose w-full h-fit border-s-4 bg-gradient-to-b from-slate-300/20 to-slate-300/50 via-cyan-200/20 rounded-md drop-shadow-lg shadow-md xl:pb-5"
   title={title}
 >
   <div class="w-16 h-16 rounded-full bg-white">
@@ -17,5 +17,5 @@ const { logo, description, title } = Astro.props as ServiceType;
   </div>
   <h3 class="">{title}</h3>
 
-  <p class="">{description}</p>
+  <p class="line-clamp-4">{description}</p>
 </div>

@@ -1,5 +1,16 @@
 ---
+import { wpquery } from "../helper/wordpress";
 import DevLink from "./DevLink.astro";
+
+const data = await wpquery({
+  query: `query NewQuery {
+  developers {
+    nodes {
+      title
+    }
+  }
+}`,
+});
 ---
 
 <div
@@ -20,7 +31,9 @@ import DevLink from "./DevLink.astro";
     <!-- text -->
     <div class="flex flex-col lg:gap-5 p-10 prose
     text-center">
-      <h1 class="text-pretty text-white/70">Sazzad Hossain Tanim</h1>
+      <h1 class="text-pretty text-white/70">
+        {data.developers.nodes[0].title}
+      </h1>
       <h2 class="myText prose-lg animate-pulse text-white/70"></h2>
     </div>
 
@@ -76,3 +89,4 @@ import DevLink from "./DevLink.astro";
     display: inline-block;
   }
 </style>
+../helper/wordpress
