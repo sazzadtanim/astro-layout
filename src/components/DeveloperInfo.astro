@@ -1,5 +1,28 @@
 ---
+import { wpquery } from "../wordpress/query";
 import DevLink from "./DevLink.astro";
+
+const data: Data = await wpquery({
+  query: `query DevInfo {
+  developers {
+    nodes {
+      title
+    }
+  }
+}`,
+});
+
+export interface Data {
+  developers: Developers;
+}
+export interface Developers {
+  nodes?: NodesEntity[] | null;
+}
+export interface NodesEntity {
+  title: string;
+}
+
+console.log(JSON.stringify(data));
 ---
 
 <div
@@ -20,7 +43,10 @@ import DevLink from "./DevLink.astro";
     <!-- text -->
     <div class="flex flex-col lg:gap-5 p-10 prose
     text-center">
-      <h1 class="text-pretty text-white/70">Sazzad Hossain Tanim</h1>
+      <h1 class="text-pretty text-white/70">
+        <!-- {JSON.stringify(data)} -->
+        {data?.developers?.nodes?.at(0)?.title}
+      </h1>
       <h2 class="myText prose-lg animate-pulse text-white/70"></h2>
     </div>
 
