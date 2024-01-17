@@ -19,7 +19,9 @@ import Layout from "../layouts/Layout.astro";
   <section class="prose">
     <h2>My services</h2>
 
-    <div class="grid xl:grid-cols-2 gap-5 prose">
+    <div
+      class="grid xl:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-5 prose grid-rows-[masonry]"
+    >
       <MyService
         logo="https://cdn.worldvectorlogo.com/logos/mern.svg"
         title="Astro"

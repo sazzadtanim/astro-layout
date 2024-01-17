@@ -8,7 +8,10 @@ export interface ServiceType {
 const { logo, description, title } = Astro.props as ServiceType;
 ---
 
-<div class="h-fit w-full space-y-4 pt-2 ring-red-400 prose" title={title}>
+<div
+  class="space-y-4 p-2 transition-colors scroll-smooth duration-100 hover:bg-red-400 prose w-full h-fit border-s-4 bg-gradient-to-b from-slate-300/20 to-slate-300/50 via-cyan-200/20 rounded-md drop-shadow-lg shadow-md"
+  title={title}
+>
   <div class="w-16 h-16 rounded-full bg-white">
     <img src={logo} alt={title} />
   </div>
