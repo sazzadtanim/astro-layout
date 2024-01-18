@@ -8,10 +8,23 @@ export interface I_NavItem {
 const { logo_url, title, url } = Astro.props as I_NavItem;
 ---
 
-<a class="flex flex-col gap-2 items-center" href={url}>
-  <img src={logo_url} alt={title} class="size-8" />
-  <!-- <i class="fa-solid fa-house size-8"></i> -->
+<div class="@container">
+  <a
+    class="flex flex-col gap-px items-center @sm:gap-1 @lg:gap-[6px] w-fit p-1 @sm:p-2"
+    href={url}
+  >
+    <div class="size-8 grid place-content-center">
+      <img
+        src={logo_url}
+        alt={title}
+        class="size-8 hover:size-7 hover:opacity-80 duration-150"
+      />
+    </div>
+    <!-- <i class="fa-solid fa-house size-8"></i> -->
 
-  <p class="font-medium text-sm capitalize">{title}</p>
-  <!-- <div class="h-4 bg-white w-full hidden lg:block"></div> -->
-</a>
+    <p class="font-medium text-xs capitalize whitespace-nowrap text-slate-800">
+      {title}
+    </p>
+    <!-- <div class="h-4 bg-white w-full hidden lg:block"></div> -->
+  </a>
+</div>
