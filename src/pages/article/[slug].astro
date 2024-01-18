@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { wpquery } from "../../wordpress/query";
+
+export async function getStaticPaths() {
+  const data = await wpquery({
+    query: `query Services {
+  services {
+    nodes {
+      slug
+      id
+      title
+      descriptionOfTheService
+      priceOfTheService
+    }
+  }
+
+}`,
+  });
+
+  console.log("JSONDATA", JSON.stringify(data, null, 2));
+
+  return data.services.nodes.map((service: any) => {
+    console.log("JSONSERVICE", JSON.stringify(service, null, 2));
+    return { params: { slug: service.slug }, props: service };
+  });
+}
+
+const { title, descriptionOfTheService, priceOfTheService } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="prose">
+    <h1>{title}</h1>
+    <Fragment set:html={descriptionOfTheService} />
+
+    <h2 class="font-black">${priceOfTheService}</h2>
+  </div>
+</Layout>

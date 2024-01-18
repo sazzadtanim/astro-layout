@@ -3,16 +3,23 @@ export interface ServiceType {
   logo: string;
   title: string;
   description: string;
+  slug: string;
 }
 
-const { logo, description, title } = Astro.props as ServiceType;
+const { logo, description, title, slug } = Astro.props as ServiceType;
 ---
 
-<div class="h-fit w-full space-y-4 pt-2 ring-red-400 prose" title={title}>
-  <div class="w-16 h-16 rounded-full bg-white">
-    <img src={logo} alt={title} />
-  </div>
-  <h3 class="">{title}</h3>
+<a
+  class="h-fit w-full space-y-4 pt-2 ring-red-400 no-underline"
+  title={title}
+  href={`/article/${slug}`}
+>
+  <div class="prose">
+    <div class="w-16 h-16 rounded-full bg-white">
+      <img src={logo} alt={title} />
+    </div>
+    <h3 class="">{title}</h3>
 
-  <p class="">{description}</p>
-</div>
+    <Fragment set:html={description} />
+  </div>
+</a>

@@ -22,19 +22,18 @@ import Head from "../components/Head.astro";
         <slot />
       </div>
     </div>
-    <style is:global>
-      body {
-        animation: appearUp linear 400ms;
+  </body><style is:global>
+    body {
+      animation: appearUp linear 400ms;
+    }
+    @keyframes appearUp {
+      from {
+        opacity: 0.4;
+        transform: translateY(10px);
       }
-      @keyframes appearUp {
-        from {
-          opacity: 0.4;
-          transform: translateY(10px);
-        }
-      }
-      .main {
-        animation: appearUp linear 400ms;
-      }
-    </style>
-  </body>
+    }
+    .main {
+      animation: appearUp linear 400ms;
+    }
+  </style>
 </html>
