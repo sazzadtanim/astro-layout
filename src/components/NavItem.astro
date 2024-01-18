@@ -10,14 +10,14 @@ const { logo_url, title, url } = Astro.props as I_NavItem;
 
 <div class="@container">
   <a
-    class="flex flex-col gap-px items-center @sm:gap-1 @lg:gap-[6px] w-fit p-1 @sm:p-2"
+    class="flex flex-col gap-px items-center @sm:gap-1 @lg:gap-[6px] w-fit p-1 @sm:p-2 group"
     href={url}
   >
     <div class="size-8 grid place-content-center">
       <img
         src={logo_url}
         alt={title}
-        class="size-8 hover:size-7 hover:opacity-80 duration-150"
+        class="size-8 group-hover:size-7 group-hover:opacity-80 duration-150"
       />
     </div>
     <!-- <i class="fa-solid fa-house size-8"></i> -->
