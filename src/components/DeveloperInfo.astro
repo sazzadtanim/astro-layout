@@ -2,27 +2,33 @@
 import { wpquery } from "../wordpress/query";
 import DevLink from "./DevLink.astro";
 
-const data: Data = await wpquery({
-  query: `query DevInfo {
-  developers {
+interface Data {
+  developers: Developers;
+}
+interface Developers {
+  nodes?: NodesEntity[] | null;
+}
+interface NodesEntity {
+  title: string;
+}
+
+const data = await wpquery({
+  query: `query DeveloperInfo {
+  page(id: "cG9zdDo5OQ==") {
+    adjective
+    nameOfTheDeveloper
+  }
+  socialLinks {
     nodes {
-      title
+      iconUrl
+      url
+      platformName
     }
   }
 }`,
 });
 
-export interface Data {
-  developers: Developers;
-}
-export interface Developers {
-  nodes?: NodesEntity[] | null;
-}
-export interface NodesEntity {
-  title: string;
-}
-
-console.log(JSON.stringify(data));
+console.log("data", JSON.stringify(data, null, 2));
 ---
 
 <div
@@ -44,8 +50,7 @@ console.log(JSON.stringify(data));
     <div class="flex flex-col lg:gap-5 p-10 prose
     text-center">
       <h1 class="text-pretty text-white/70">
-        <!-- {JSON.stringify(data)} -->
-        {data?.developers?.nodes?.at(0)?.title}
+        {data.page.nameOfTheDeveloper}
       </h1>
       <h2 class="myText prose-lg animate-pulse text-white/70"></h2>
     </div>
@@ -54,19 +59,11 @@ console.log(JSON.stringify(data));
     <div
       class="grid grid-flow-col gap-4 justify-center lg:mb-20 place-content-stretch"
     >
-      <DevLink
-        url="https://github.com/sazzadtanim"
-        icon="https://www.svgrepo.com/show/512317/github-142.svg"
-      />
-      <DevLink
-        url="https://wa.me/+8801515621167"
-        icon="https://www.svgrepo.com/show/513060/whatsapp-128.svg"
-      />
-
-      <DevLink
-        url="https://wa.me/+8801515621167"
-        icon="https://www.svgrepo.com/show/521656/facebook-messenger.svg"
-      />
+      {
+        data.socialLinks.nodes.map((Link: any) => (
+          <DevLink url={Link.url} icon={Link.iconUrl} />
+        ))
+      }
     </div>
 
     <!-- buttons -->
