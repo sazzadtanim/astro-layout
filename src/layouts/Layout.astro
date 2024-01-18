@@ -17,23 +17,24 @@ import Head from "../components/Head.astro";
     <DeveloperInfo />
 
     <!-- main app -->
-    <div class="bg-slate-200 lg:col-span-7 p-5 overflow-hidden main">
-      <div class="w-full h-full p-20 gap-10 grid overflow-y-scroll">
+    <div class="bg-slate-200 lg:col-span-7 p-4 overflow-hidden main @container">
+      <div class="w-full h-full @sm:p-4 @sm:gap-10 grid overflow-y-scroll">
         <slot />
       </div>
     </div>
-  </body><style is:global>
-    body {
-      animation: appearUp linear 400ms;
-    }
-    @keyframes appearUp {
-      from {
-        opacity: 0.4;
-        transform: translateY(10px);
+    <style is:global>
+      body {
+        animation: appearUp linear 400ms;
       }
-    }
-    .main {
-      animation: appearUp linear 400ms;
-    }
-  </style>
+      @keyframes appearUp {
+        from {
+          opacity: 0.4;
+          transform: translateY(10px);
+        }
+      }
+      .main {
+        animation: appearUp linear 400ms;
+      }
+    </style>
+  </body>
 </html>

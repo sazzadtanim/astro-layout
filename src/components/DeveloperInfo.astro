@@ -49,22 +49,26 @@ console.log("data", JSON.stringify(data, null, 2));
     <!-- text -->
     <div class="flex flex-col lg:gap-5 p-10 prose
     text-center">
-      <h1 class="text-pretty text-white/70">
-        {data.page.nameOfTheDeveloper}
-      </h1>
+      {
+        data ? (
+          <h1 class="text-pretty text-white/70">
+            {data.page.nameOfTheDeveloper}
+          </h1>
+        ) : null
+      }
       <h2 class="myText prose-lg animate-pulse text-white/70"></h2>
     </div>
 
     <!-- icons -->
-    <div
-      class="grid grid-flow-col gap-4 justify-center lg:mb-20 place-content-stretch"
-    >
-      {
-        data.socialLinks.nodes.map((Link: any) => (
-          <DevLink url={Link.url} icon={Link.iconUrl} />
-        ))
-      }
-    </div>
+    {
+      data ? (
+        <div class="grid grid-flow-col gap-4 justify-center lg:mb-20 place-content-stretch">
+          {data.socialLinks.nodes.map((Link: any) => (
+            <DevLink url={Link.url} icon={Link.iconUrl} />
+          ))}
+        </div>
+      ) : null
+    }
 
     <!-- buttons -->
     <div class="flex gap-4 justify-between prose">

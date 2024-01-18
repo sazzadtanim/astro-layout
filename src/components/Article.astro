@@ -1,19 +1,19 @@
 ---
 interface MyArticle {
-  title: string;
-  sub_title: string;
-  description: string;
+  title?: string;
+  sub_title?: string;
+  description?: string;
 }
 
 const { description, sub_title, title } = Astro.props as MyArticle;
 ---
 
-<article class="prose space-y-4">
-  <h2 class="">{title}</h2>
+<div class="@container">
+  <article class="prose space-y-4 p-4 @sm:p-8 prose-slate">
+    {title ? <h2 class="">{title}</h2> : null}
 
-  <h3>{sub_title}</h3>
+    {sub_title ? <h3>{sub_title}</h3> : null}
 
-  <p class="">
-    {description}
-  </p>
-</article>
+    {description ? <p class="">{description}</p> : null}
+  </article>
+</div>
